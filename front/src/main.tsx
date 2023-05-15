@@ -18,6 +18,8 @@ import ProductDetail from '@pages/Product/ProductDetail/index.tsx';
 import Purchase from './pages/Purchase/PurchaseAdd/index.tsx';
 import NestedModal from './pages/Product/test/index.tsx';
 import BranchesAddr from './pages/branchesAddr/index.tsx';
+import PurchaseList from './pages/Purchase/Purchases/index.tsx';
+import SignUp from './pages/User/SignUp/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +71,10 @@ const router = createBrowserRouter([
             path: 'signin',
             element: <SignIn />,
           },
+          {
+            path: 'signup',
+            element: <SignUp />,
+          },
         ],
       },
       {
@@ -99,6 +105,10 @@ const router = createBrowserRouter([
           path: 'add/:productNo',
           element: <Purchase />,
         },
+        {
+          path: 'list',
+          element: <PurchaseList />,
+        }
       ],
     },
     ],

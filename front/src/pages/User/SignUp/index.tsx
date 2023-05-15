@@ -58,6 +58,7 @@ const SignUp = () => {
   };
 
   return (
+    
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar
@@ -71,7 +72,7 @@ const SignUp = () => {
       >
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Company name
+            BHC
           </Typography>
         </Toolbar>
       </AppBar>

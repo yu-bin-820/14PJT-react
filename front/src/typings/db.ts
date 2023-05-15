@@ -50,3 +50,25 @@ export interface MarkerProps {
   content: ReactNode;
   latlng: { lat: number, lng: number };
 }
+
+export interface Purchase {
+  buyer: IUser;
+  detailAddr: string;
+  divyAddr: string;
+  divyDate: Date;
+  prodName: string;
+  divyRequest: string;
+  lat: number;
+  lng: number;
+  orderDate: Date;
+  receiverName: string;
+  receiverPhone: string;
+  roadAddr: string;
+  paymentOption: number;
+  tranNo: number;
+  purchaseProd: Product;
+  userId: string;
+  regDate: Date;
+  proTranCode: string;
+}
+

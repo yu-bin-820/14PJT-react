@@ -173,7 +173,7 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item>
-                <Typography component={Link} to="/users/signup" color={'Green'}>
+                <Typography component={Link} to="/user/signup" color={'Green'}>
                   Don't have an account? Sign Up
                 </Typography>
               </Grid>

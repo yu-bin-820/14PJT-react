@@ -15,6 +15,34 @@ declare global {
 
 export default function BranchesAddr() {
 
+  const [state, setState] = React.useState({
+    center: {
+      lat: 37.5696563183315,
+      lng: 126.986756202034,
+    }
+  })
+
+  React.useEffect(() => {
+    if (navigator.geolocation) {
+      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setState((prev) => ({
+            ...prev,
+            center: {
+              lat: position.coords.latitude, // 위도
+              lng: position.coords.longitude, // 경도
+            },
+            isLoading: false,
+          }))
+        },
+        (err) => {
+          console.log("위치정보 가져올 수 없음")
+        }
+      )
+    }
+  }, [])
+
   const [branch, setBranch] = React.useState<any[]>();
 
   React.useEffect(() => {
@@ -64,11 +92,7 @@ export default function BranchesAddr() {
 
   return (
     <Map // 지도를 표시할 Container
-      center={{
-        // 지도의 중심좌표
-        lat: 37.5696563183315,
-        lng: 126.986756202034,
-      }}
+      center={state.center}
       style={{
         // 지도의 크기
         width: "100%",

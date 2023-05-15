@@ -14,7 +14,6 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import useSWR from 'swr';
-import useIpStore from '@/hooks/useIpStore';
 import fetcher from '@/utils/fetcher';
 import axios from 'axios';
 
@@ -26,7 +25,7 @@ function Top() {
     '주문관리',
     '지점안내',
     '메뉴',
-    '지점정보',
+    '주문내역',
   ]);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -37,10 +36,9 @@ function Top() {
   const [onClickPageNavFunctions, setOnClickPageNavFunctions] = useState([
     () => {},
   ]);
-  const { springSvrIp } = useIpStore();
 
   const { data: myData, mutate: mutateMe } = useSWR(
-    `http://192.168.0.9:8080/user/json/login`,
+    `http://${import.meta.env.VITE_IP}:8080/user/json/login`,
     fetcher
   );
 
@@ -54,20 +52,20 @@ function Top() {
   const onClickManagePurchases = useCallback(() => {
     navigate('/manage/purchase');
   }, []);
-  const onClickAboutUs = useCallback(() => {
-    navigate('/aboutus');
+  const onClickBranchInformation = useCallback(() => {
+    navigate('/branch');
   }, []);
   const onClickProducts = useCallback(() => {
     navigate('/product/list');
   }, []);
   const onClickCommunity = useCallback(() => {
-    navigate('/commuinty');
+    navigate('/purchase/list');
   }, []);
   const onClickMyInfo = useCallback(() => {}, []);
   const onClickPurchaseHistory = useCallback(() => {}, []);
   const onClickSignOut = useCallback(() => {
     axios
-      .delete(`http://192.168.0.9:8080/user/json/login`, {
+      .delete(`http://${import.meta.env.VITE_IP}:8080/user/json/login`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -105,7 +103,7 @@ function Top() {
     if (myData?.role !== 'admin') {
       setPages(['개인정보', '메뉴', '구매내역']);
       setOnClickPageNavFunctions([
-        onClickAboutUs,
+        onClickBranchInformation,
         onClickProducts,
         onClickCommunity,
       ]);
@@ -114,7 +112,7 @@ function Top() {
         '회원관리',
         '메뉴관리',
         '주문관리',
-        '지점관리',
+        '지점정보',
         '메뉴',
         '주문정보',
       ]);
@@ -122,7 +120,7 @@ function Top() {
         onClickManageUsers,
         onClickManageProducts,
         onClickManagePurchases,
-        onClickAboutUs,
+        onClickBranchInformation,
         onClickProducts,
         onClickCommunity,
       ]);

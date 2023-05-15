@@ -16,7 +16,7 @@ export default function ProductList() {
   
   useEffect(() => {
     axios
-      .get('http://192.168.219.106:8080/product/json/listProduct')
+      .get(`http://${import.meta.env.VITE_IP}:8080/product/json/listProduct`)
       .then((response) =>{
         console.log(response.data);
         setProductsData(response.data);

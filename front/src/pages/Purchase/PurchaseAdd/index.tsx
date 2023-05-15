@@ -1,7 +1,7 @@
 
 import { Box, Container, Stack, Typography, Unstable_Grid2 as Grid } from '@mui/material';
-import PurchaseData from '@/components/PurchaseAdd/purchseData';
-import { PurchaseInput } from '@/components/PurchaseAdd/purchaseInput';
+import { PurchaseData } from '@/components/PurchaseAdd/purchaseData';
+import PurchaseInput from '@/components/PurchaseAdd/purchaseInput';
 
 const Purchase = () => (
   <>
@@ -22,17 +22,13 @@ const Purchase = () => (
             >
               <Grid
                 xs={12}
-                md={6}
-                lg={8}
               >
-                <PurchaseInput />
+                <PurchaseData />
               </Grid>
               <Grid
                 xs={12}
-                md={6}
-                lg={8}
               >
-                <PurchaseData />
+                <PurchaseInput />
               </Grid>
             </Grid>
           </div>
